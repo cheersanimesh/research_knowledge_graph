@@ -49,4 +49,3 @@ restart: ## Restart all services
 
 status: ## Show status of all services
 	docker-compose ps
-

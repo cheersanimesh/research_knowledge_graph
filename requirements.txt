@@ -1,9 +1,11 @@
 # Core dependencies
 pydantic>=2.5.0
 psycopg2-binary>=2.9.9
+pgvector>=0.2.0
 sqlalchemy>=2.0.23
 typer>=0.9.0
 python-dotenv>=1.0.0
+supabase>=2.4.0
 
 # LLM API
 openai>=1.6.0

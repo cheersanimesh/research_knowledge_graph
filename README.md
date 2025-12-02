@@ -51,10 +51,11 @@ docker-compose exec app python src/main.py query ask_nl_query --query "What pape
 
 ![Zoomed in graph](images/graph_zoomed_in.png)
 
-</details>
+The dataset was acquired by running a PDF scraper on the citation link: [https://scholar.google.com/scholar?cites=12323590702419478298&as_sdt=80005&sciodt=0,11&hl=en](https://scholar.google.com/scholar?cites=12323590702419478298&as_sdt=80005&sciodt=0,11&hl=en)
 
-## Features
+The code to generate this dataset is in `src/google_scholar_down.py`.
 
+### Key Features
 - **Multi-Format Ingestion**: Process papers from JSON files or PDF documents
 - **LLM-Driven Extraction**: Automatically extracts concepts, methods, datasets, metrics, and authors
 - **Cross-Paper Relationships**: Infers semantic relationships between papers (IMPROVES_ON, EXTENDS, COMPARES_TO)

@@ -32,6 +32,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    env_file:
+      - .env
     environment:
       # Database configuration
       DATABASE_URL: postgresql://${DB_USER:-postgres}:${DB_PASSWORD:-postgres}@postgres:5432/${DB_NAME:-paper_graph_db}
@@ -60,6 +62,8 @@ services:
       # Mount data directory for input files
       - ./data:/app/data
       - ./src/examples:/app/src/examples
+      # Mount .env file so load_dotenv() can read it
+      - ./.env:/app/.env
     networks:
       - paper_graph_network
     # Override command to keep container running
