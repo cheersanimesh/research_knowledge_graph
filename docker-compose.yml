@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # PostgreSQL database with pgvector extension
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: paper_graph_db
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-paper_graph_db}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./sql/init_pgvector.sql:/docker-entrypoint-initdb.d/02-pgvector.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - paper_graph_network
+
+  # Application service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: paper_graph_app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      # Database configuration
+      DATABASE_URL: postgresql://${DB_USER:-postgres}:${DB_PASSWORD:-postgres}@postgres:5432/${DB_NAME:-paper_graph_db}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-postgres}
+      DB_NAME: ${DB_NAME:-paper_graph_db}
+      
+      # Supabase (optional)
+      SUPABASE_URL: ${SUPABASE_URL:-}
+      SUPABASE_KEY: ${SUPABASE_KEY:-}
+      
+      # OpenAI
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4-turbo-preview}
+      OPENAI_EMBEDDING_MODEL: ${OPENAI_EMBEDDING_MODEL:-text-embedding-3-small}
+      
+      # Together AI (optional)
+      TOGETHER_API_KEY: ${TOGETHER_API_KEY:-}
+      
+      # Logging
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      DEBUG: ${DEBUG:-False}
+    volumes:
+      # Mount data directory for input files
+      - ./data:/app/data
+      - ./src/examples:/app/src/examples
+    networks:
+      - paper_graph_network
+    # Override command to keep container running
+    command: tail -f /dev/null
+    stdin_open: true
+    tty: true
+
+volumes:
+  postgres_data:
+
+networks:
+  paper_graph_network:
+    driver: bridge
+

@@ -1,0 +1,39 @@
+[
+  {
+    "title": "3D Gaussian Splatting for Real-Time Radiance Field Rendering",
+    "abstract": "We introduce 3D Gaussian Splatting, a novel method for real-time rendering of radiance fields. Our approach represents scenes as a collection of 3D Gaussians, enabling efficient rendering while maintaining high visual quality. We demonstrate state-of-the-art results on standard benchmarks.",
+    "year": 2023,
+    "venue": "SIGGRAPH",
+    "arxiv_id": "2308.04079",
+    "authors": ["Bernhard Kerbl", "Georgios Kopanas", "Thomas Leimkühler", "George Drettakis"],
+    "text": "3D Gaussian Splatting represents a breakthrough in real-time novel view synthesis. The method uses a collection of 3D Gaussians to represent scenes, each with position, covariance, opacity, and spherical harmonics coefficients. Our approach achieves real-time rendering at high resolution while maintaining photorealistic quality. We evaluate on datasets including MipNeRF-360, Tanks and Temples, and Deep Blending. Key metrics include PSNR, SSIM, and LPIPS. The method introduces adaptive density control and periodic optimization to improve quality."
+  },
+  {
+    "title": "Adaptive 3D Gaussian Splatting for Dynamic Scene Reconstruction",
+    "abstract": "We extend 3D Gaussian Splatting to handle dynamic scenes by introducing adaptive density control and temporal consistency mechanisms. Our method improves upon the original 3DGS by adding motion modeling and better handling of occlusions.",
+    "year": 2024,
+    "venue": "CVPR",
+    "arxiv_id": "2401.12345",
+    "authors": ["Jane Smith", "John Doe"],
+    "text": "This work extends 3D Gaussian Splatting to dynamic scenes. We introduce adaptive density control that adjusts Gaussian parameters based on scene motion. Our method improves upon the original 3DGS approach by adding temporal consistency and better occlusion handling. We evaluate on dynamic scene datasets and show improvements in PSNR and SSIM metrics. The approach uses similar evaluation protocols as the original 3DGS paper."
+  },
+  {
+    "title": "Compressed Gaussian Splatting for Efficient Storage and Transmission",
+    "abstract": "We present a compression method for 3D Gaussian Splatting that reduces storage requirements by 10x while maintaining visual quality. Our approach uses quantization and pruning techniques to compress Gaussian parameters.",
+    "year": 2024,
+    "venue": "ICCV",
+    "arxiv_id": "2402.23456",
+    "authors": ["Alice Johnson", "Bob Wilson"],
+    "text": "This paper addresses the storage and transmission challenges of 3D Gaussian Splatting. We introduce compression techniques including quantization of spherical harmonics coefficients and pruning of low-contribution Gaussians. Our method extends the original 3DGS framework with compression-aware optimization. We evaluate compression ratios and quality metrics including PSNR and SSIM on standard datasets like MipNeRF-360."
+  },
+  {
+    "title": "Gaussian Splatting with Neural Radiance Fields: A Hybrid Approach",
+    "abstract": "We combine the efficiency of 3D Gaussian Splatting with the quality of Neural Radiance Fields, creating a hybrid representation that leverages the strengths of both approaches.",
+    "year": 2024,
+    "venue": "NeurIPS",
+    "arxiv_id": "2403.34567",
+    "authors": ["Charlie Brown", "Diana Prince"],
+    "text": "This work introduces a hybrid approach combining 3D Gaussian Splatting and Neural Radiance Fields. We use Gaussians for efficient rendering and NeRF for high-quality detail. The method compares favorably to both pure 3DGS and NeRF approaches. We evaluate on datasets including Tanks and Temples, measuring PSNR, SSIM, and rendering speed."
+  }
+]
+
