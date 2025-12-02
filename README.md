@@ -53,7 +53,7 @@ docker-compose exec app python src/main.py query ask_nl_query --query "What pape
 
 The dataset was acquired by running a PDF scraper on the citation link: [https://scholar.google.com/scholar?cites=12323590702419478298&as_sdt=80005&sciodt=0,11&hl=en](https://scholar.google.com/scholar?cites=12323590702419478298&as_sdt=80005&sciodt=0,11&hl=en)
 
-The code to generate this dataset is in `src/google_scholar_down.py`.
+The code to generate the pdf corpus is in `src/google_scholar_down.py`.
 
 ### Key Features
 - **Multi-Format Ingestion**: Process papers from JSON files or PDF documents
@@ -62,7 +62,7 @@ The code to generate this dataset is in `src/google_scholar_down.py`.
 - **Semantic Search**: Vector similarity search using pgvector for finding related papers
 - **Question Answering**: RAG-based natural language query interface
 - **Graph Visualization**: Interactive HTML visualizations with physics-based layout
-- **PostgreSQL Storage**: Full graph database with typed nodes and edges
+- **PostgreSQL Graph Storage**: Uses PostgreSQL as a graph database with typed nodes and edges, with integration via **Supabase**
 - **Multi-LLM Support**: Works with OpenAI and Together AI models
 
 ## Installation & Setup
