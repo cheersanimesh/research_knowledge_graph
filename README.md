@@ -44,7 +44,7 @@ docker-compose exec app python src/main.py query ask_nl_query --query "What pape
 
 </details>
 
-## Current Graph Visualization ( Based on 90 papers around )
+## Current Graph Visualization ( Based on 90 papers around 3D Gaussian Splatting)
 
 ![Zoomed out graph](images/graph_zoomed_out.png)
 
@@ -355,6 +355,14 @@ Extended metadata for paper nodes:
 
 ### Graph Representation
 
+### Relationship Linking Optimization
+
+**Pruning Strategies**: 
+- Semantic + dataset filtering (top-k neighbors + shared datasets)
+- Shared node filtering (papers sharing entities)
+
+Reduces O(n²) comparisons to O(n*k) where k << n.
+
 **Node Types**: Six types (paper, concept, method, dataset, metric, author) balance specificity with generality.
 
 **Dynamic Types**: Single `nodes` table with `node_type` field provides flexibility without schema changes.
@@ -373,13 +381,7 @@ Extended metadata for paper nodes:
 
 **Semantic Search**: Vector embeddings (pgvector) for finding conceptually related papers.
 
-### Relationship Linking Optimization
 
-**Pruning Strategies**: 
-- Semantic + dataset filtering (top-k neighbors + shared datasets)
-- Shared node filtering (papers sharing entities)
-
-Reduces O(n²) comparisons to O(n*k) where k << n.
 
 ### LLM Provider Support
 
