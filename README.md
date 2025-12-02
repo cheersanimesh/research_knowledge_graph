@@ -354,7 +354,6 @@ Extended metadata for paper nodes:
 <details>
 <summary><strong>Click to expand design decisions</strong></summary>
 
-### Graph Representation
 
 ### Relationship Linking Optimization
 
@@ -363,6 +362,8 @@ Extended metadata for paper nodes:
 - Shared node filtering (papers sharing entities)
 
 Reduces O(n²) comparisons to O(n*k) where k << n.
+
+### Graph Representation
 
 **Node Types**: Six types (paper, concept, method, dataset, metric, author) balance specificity with generality.
 
